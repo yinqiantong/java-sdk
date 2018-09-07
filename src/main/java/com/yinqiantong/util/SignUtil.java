@@ -1,8 +1,8 @@
-package com.aimobo.util;
+package com.yinqiantong.util;
 
-import com.aimobo.Yinqintong;
-import com.aimobo.common.Constants;
-import com.aimobo.model.Options;
+import com.yinqiantong.Yinqintong;
+import com.yinqiantong.common.Constants;
+import com.yinqiantong.model.Options;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 

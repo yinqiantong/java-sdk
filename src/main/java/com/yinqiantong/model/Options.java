@@ -1,4 +1,4 @@
-package com.aimobo.model;
+package com.yinqiantong.model;
 
 import org.apache.commons.lang3.StringUtils;
 

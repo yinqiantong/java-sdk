@@ -1,10 +1,10 @@
-package com.aimobo;
+package com.yinqiantong;
 
-import com.aimobo.model.Options;
-import com.aimobo.model.Order;
-import com.aimobo.model.Res;
-import com.aimobo.net.Api;
-import com.aimobo.util.SignUtil;
+import com.yinqiantong.model.Options;
+import com.yinqiantong.model.Order;
+import com.yinqiantong.model.Res;
+import com.yinqiantong.net.Api;
+import com.yinqiantong.util.SignUtil;
 import org.apache.commons.lang3.StringUtils;
 
 public final class Yinqintong {

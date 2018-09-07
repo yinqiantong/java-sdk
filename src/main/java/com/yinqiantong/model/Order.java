@@ -1,4 +1,4 @@
-package com.aimobo.model;
+package com.yinqiantong.model;
 
 public class Order {
     private String appId;

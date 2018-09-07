@@ -1,9 +1,9 @@
-package com.aimobo.net;
+package com.yinqiantong.net;
 
-import com.aimobo.Yinqintong;
-import com.aimobo.common.Constants;
-import com.aimobo.model.Options;
-import com.aimobo.model.Res;
+import com.yinqiantong.Yinqintong;
+import com.yinqiantong.common.Constants;
+import com.yinqiantong.model.Options;
+import com.yinqiantong.model.Res;
 import com.google.gson.Gson;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.fluent.Form;

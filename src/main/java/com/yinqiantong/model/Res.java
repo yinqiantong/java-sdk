@@ -1,6 +1,6 @@
-package com.aimobo.model;
+package com.yinqiantong.model;
 
-import com.aimobo.common.Constants;
+import com.yinqiantong.common.Constants;
 
 public class Res<T> {
     private String msg;

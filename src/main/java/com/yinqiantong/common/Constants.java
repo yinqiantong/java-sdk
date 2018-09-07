@@ -1,4 +1,4 @@
-package com.aimobo.common;
+package com.yinqiantong.common;
 
 public final class Constants {
     public static final class URL {
