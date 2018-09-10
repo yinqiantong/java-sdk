@@ -3,7 +3,7 @@
 ## 创建订单
 
 ```
-Yinqintong.create(appId, appKey, appSecret)
+Yinqiantong.create(appId, appKey, appSecret)
         .createOrder(Options.newInstance()
                 .setChannel("alipay")
                 .setPlatform("app")

@@ -1,6 +1,6 @@
 package com.yinqiantong.net;
 
-import com.yinqiantong.Yinqintong;
+import com.yinqiantong.Yinqiantong;
 import com.yinqiantong.common.Constants;
 import com.yinqiantong.model.Options;
 import com.yinqiantong.model.Res;
@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class Api {
-    public static Res.OrderRes createOrder(Yinqintong yinqintong, Options options) throws Exception {
+    public static Res.OrderRes createOrder(Yinqiantong yinqiantong, Options options) throws Exception {
         List<NameValuePair> form = Form.form()
                 .add(Constants.KEY.CHANNEL, options.getChannel())
                 .add(Constants.KEY.PLATFORM, options.getPlatform())
@@ -26,12 +26,12 @@ public class Api {
                 .build();
 
         String order = Request.Post(Constants.URL.ORDER)
-                .connectTimeout(yinqintong.getRequestTimeout())
-                .socketTimeout(yinqintong.getRequestTimeout())
-                .addHeader(Constants.KEY.APPID, yinqintong.getAppId())
-                .addHeader(Constants.KEY.APPKEY, yinqintong.getAppKey())
+                .connectTimeout(yinqiantong.getRequestTimeout())
+                .socketTimeout(yinqiantong.getRequestTimeout())
+                .addHeader(Constants.KEY.APPID, yinqiantong.getAppId())
+                .addHeader(Constants.KEY.APPKEY, yinqiantong.getAppKey())
                 .addHeader(Constants.KEY.TS, String.valueOf(options.getTs()))
-                .addHeader(Constants.KEY.SIGN, yinqintong.createSign(options))
+                .addHeader(Constants.KEY.SIGN, yinqiantong.createSign(options))
                 .bodyForm(form)
                 .execute().returnContent().asString();
 
@@ -39,12 +39,12 @@ public class Api {
         return gson.fromJson(order, Res.OrderRes.class);
     }
 
-    public static Res.OrderRes getOrder(Yinqintong yinqintong, String outTradeNo) throws Exception {
+    public static Res.OrderRes getOrder(Yinqiantong yinqiantong, String outTradeNo) throws Exception {
         String url = String.format("%s/%s", Constants.URL.ORDER, outTradeNo);
 
         String order = Request.Get(url)
-                .addHeader(Constants.KEY.APPID, yinqintong.getAppId())
-                .addHeader(Constants.KEY.APPKEY, yinqintong.getAppKey())
+                .addHeader(Constants.KEY.APPID, yinqiantong.getAppId())
+                .addHeader(Constants.KEY.APPKEY, yinqiantong.getAppKey())
                 .execute().returnContent().asString();
 
         Gson gson = new Gson();

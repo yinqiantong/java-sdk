@@ -1,13 +1,13 @@
 package com.yinqiantong.util;
 
-import com.yinqiantong.Yinqintong;
+import com.yinqiantong.Yinqiantong;
 import com.yinqiantong.common.Constants;
 import com.yinqiantong.model.Options;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 public class SignUtil {
-    public static String createSign(Yinqintong yinqintong, Options options) {
+    public static String createSign(Yinqiantong yinqiantong, Options options) {
         StringBuilder signOrigin = new StringBuilder();
         appendIfNotEmpty(signOrigin, Constants.KEY.CHANNEL, options.getChannel());
         appendIfNotEmpty(signOrigin, Constants.KEY.CLIENT_IP, options.getClientIp());
@@ -19,7 +19,7 @@ public class SignUtil {
         appendIfNotEmpty(signOrigin, Constants.KEY.SUBJECT, options.getSubject());
 
         appendIfNotEmpty(signOrigin, Constants.KEY.TS, options.getTs());
-        appendIfNotEmpty(signOrigin, Constants.KEY.APP_SECRET, yinqintong.getAppSecret());
+        appendIfNotEmpty(signOrigin, Constants.KEY.APP_SECRET, yinqiantong.getAppSecret());
 
         signOrigin.deleteCharAt(signOrigin.length() - 1);
 

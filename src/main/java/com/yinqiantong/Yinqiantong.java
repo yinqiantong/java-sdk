@@ -7,28 +7,28 @@ import com.yinqiantong.net.Api;
 import com.yinqiantong.util.SignUtil;
 import org.apache.commons.lang3.StringUtils;
 
-public final class Yinqintong {
+public final class Yinqiantong {
     private String appId;
     private String appKey;
     private String appSecret;
 
     private int requestTimeout = 1000;
 
-    public static Yinqintong create(String appId, String appKey, String appSecret) {
+    public static Yinqiantong create(String appId, String appKey, String appSecret) {
         if (StringUtils.isEmpty(appId) || StringUtils.isEmpty(appKey) || StringUtils.isEmpty(appSecret)) {
             throw new IllegalArgumentException("empty key");
         }
 
-        return new Yinqintong(appId, appKey, appSecret);
+        return new Yinqiantong(appId, appKey, appSecret);
     }
 
-    private Yinqintong(String appId, String appKey, String appSecret) {
+    private Yinqiantong(String appId, String appKey, String appSecret) {
         this.appId = appId;
         this.appKey = appKey;
         this.appSecret = appSecret;
     }
 
-    public Yinqintong setRequestTimeout(int timeout) {
+    public Yinqiantong setRequestTimeout(int timeout) {
         this.requestTimeout = timeout;
         return this;
     }
