@@ -36,6 +36,5 @@ Yinqiantong.create(appId, appKey, appSecret)
                 .setChannel("alipay")
                 .setPlatform("app")
                 .setMoney(1)
-                .setClientIp("127.0.0.1")
-                .setTs(1536286756L));
+                .setClientIp("127.0.0.1"));
 ```

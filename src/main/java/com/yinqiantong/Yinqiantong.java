@@ -54,6 +54,9 @@ public final class Yinqiantong {
     }
 
     public Order createOrder(Options options) throws Exception {
+        if (options.getTs() <= 0L) {
+            options.setTs(System.currentTimeMillis() / 1000L);
+        }
         Res.OrderRes res = Api.createOrder(this, options);
         if (!res.isSuccess()) {
             throw new Exception(res.getMsg());
