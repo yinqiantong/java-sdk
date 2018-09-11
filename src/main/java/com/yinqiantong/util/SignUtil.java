@@ -11,6 +11,7 @@ public class SignUtil {
         StringBuilder signOrigin = new StringBuilder();
         appendIfNotEmpty(signOrigin, Constants.KEY.CHANNEL, options.getChannel());
         appendIfNotEmpty(signOrigin, Constants.KEY.CLIENT_IP, options.getClientIp());
+        appendIfNotEmpty(signOrigin, Constants.KEY.CODE, options.getCode());
         appendIfNotEmpty(signOrigin, Constants.KEY.DESCRIPTION, options.getDescription());
         appendIfNotEmpty(signOrigin, Constants.KEY.EXTRA, options.getExtra());
         appendIfNotEmpty(signOrigin, Constants.KEY.MONEY, options.getMoney());

@@ -14,6 +14,7 @@ public class Options {
     private String description;
     private String extra;
     private long ts;
+    private String code;
 
     public static Options newInstance() {
         return new Options();
@@ -115,6 +116,15 @@ public class Options {
             ts /= 1000L;
         }
         this.ts = ts;
+        return this;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public Options setCode(String code) {
+        this.code = code;
         return this;
     }
 }

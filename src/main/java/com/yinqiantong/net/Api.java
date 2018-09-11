@@ -16,6 +16,7 @@ public class Api {
     public static Res.OrderRes createOrder(Yinqiantong yinqiantong, Options options) throws Exception {
         List<NameValuePair> form = Form.form()
                 .add(Constants.KEY.CHANNEL, options.getChannel())
+                .add(Constants.KEY.CODE, options.getCode())
                 .add(Constants.KEY.PLATFORM, options.getPlatform())
                 .add(Constants.KEY.MONEY, String.valueOf(options.getMoney()))
                 .add(Constants.KEY.CLIENT_IP, options.getClientIp())

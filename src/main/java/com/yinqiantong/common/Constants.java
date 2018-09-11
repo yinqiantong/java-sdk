@@ -8,6 +8,7 @@ public final class Constants {
 
     public static final class KEY {
         public static final String CHANNEL = "channel";
+        public static final String CODE = "code";
         public static final String CLIENT_IP = "client_ip";
         public static final String DESCRIPTION = "description";
         public static final String EXTRA = "extra";
