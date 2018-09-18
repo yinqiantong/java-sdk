@@ -36,5 +36,6 @@ Yinqiantong.create(appId, appKey, appSecret)
                 .setChannel("alipay")
                 .setPlatform("app")
                 .setMoney(1)
+                .setNotifyUrl('https://host.com/notify_url')
                 .setClientIp("127.0.0.1"));
 ```

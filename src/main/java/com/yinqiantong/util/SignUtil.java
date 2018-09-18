@@ -15,6 +15,7 @@ public class SignUtil {
         appendIfNotEmpty(signOrigin, Constants.KEY.DESCRIPTION, options.getDescription());
         appendIfNotEmpty(signOrigin, Constants.KEY.EXTRA, options.getExtra());
         appendIfNotEmpty(signOrigin, Constants.KEY.MONEY, options.getMoney());
+        appendIfNotEmpty(signOrigin, Constants.KEY.NOTIFY_URL, options.getNotifyUrl());
         appendIfNotEmpty(signOrigin, Constants.KEY.OPEN_ID, options.getOpenId());
         appendIfNotEmpty(signOrigin, Constants.KEY.PLATFORM, options.getPlatform());
         appendIfNotEmpty(signOrigin, Constants.KEY.SUBJECT, options.getSubject());

@@ -19,6 +19,7 @@ public class Api {
                 .add(Constants.KEY.CODE, options.getCode())
                 .add(Constants.KEY.PLATFORM, options.getPlatform())
                 .add(Constants.KEY.MONEY, String.valueOf(options.getMoney()))
+                .add(Constants.KEY.NOTIFY_URL, options.getNotifyUrl())
                 .add(Constants.KEY.CLIENT_IP, options.getClientIp())
                 .add(Constants.KEY.OPEN_ID, options.getOpenId())
                 .add(Constants.KEY.SUBJECT, options.getSubject())

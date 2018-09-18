@@ -21,6 +21,7 @@ public final class Constants {
         public static final String APPKEY = "appkey";
         public static final String APPID = "appid";
         public static final String SIGN = "sign";
+        public static final String NOTIFY_URL = "notify_url";
     }
 
     public static final class CODE {

@@ -15,6 +15,7 @@ public class Options {
     private String extra;
     private long ts;
     private String code;
+    private String notifyUrl;
 
     public static Options newInstance() {
         return new Options();
@@ -125,6 +126,15 @@ public class Options {
 
     public Options setCode(String code) {
         this.code = code;
+        return this;
+    }
+
+    public String getNotifyUrl() {
+        return notifyUrl;
+    }
+
+    public Options setNotifyUrl(String notifyUrl) {
+        this.notifyUrl = notifyUrl;
         return this;
     }
 }
