@@ -7,6 +7,8 @@ import com.yinqiantong.net.Api;
 import com.yinqiantong.util.SignUtil;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Map;
+
 public final class Yinqiantong {
     private String appId;
     private String appKey;
@@ -53,6 +55,10 @@ public final class Yinqiantong {
         return SignUtil.createSign(this, options);
     }
 
+    public String createSign(Map<String, Object> data, long ts) {
+        return SignUtil.createSign(data, ts, appSecret);
+    }
+
     public Order createOrder(Options options) throws Exception {
         if (options.getTs() <= 0L) {
             options.setTs(System.currentTimeMillis() / 1000L);
@@ -72,6 +78,16 @@ public final class Yinqiantong {
         }
 
         return res.getData();
+    }
+
+    public boolean checkSign(Map<String, Object> data, long ts, String sign) {
+        if (StringUtils.isEmpty(sign)) {
+            return false;
+        }
+
+        String currSign = createSign(data, ts);
+
+        return sign.equals(currSign);
     }
 
 }

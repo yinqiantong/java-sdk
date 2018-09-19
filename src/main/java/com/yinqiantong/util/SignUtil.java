@@ -6,7 +6,29 @@ import com.yinqiantong.model.Options;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 public class SignUtil {
+    public static String createSign(Map<String, Object> data, long ts, String appSecret) {
+        StringBuilder signOrigin = new StringBuilder();
+        if (data != null && !data.isEmpty()) {
+            List<String> keys = new ArrayList<>(data.keySet());
+            Collections.sort(keys);
+            for (String key : keys) {
+                signOrigin.append(key).append('=').append(data.get(key)).append('&');
+            }
+        }
+        appendIfNotEmpty(signOrigin, Constants.KEY.TS, ts);
+        appendIfNotEmpty(signOrigin, Constants.KEY.APP_SECRET, appSecret);
+
+        signOrigin.deleteCharAt(signOrigin.length() - 1);
+
+        return DigestUtils.md5Hex(signOrigin.toString());
+    }
+
     public static String createSign(Yinqiantong yinqiantong, Options options) {
         StringBuilder signOrigin = new StringBuilder();
         appendIfNotEmpty(signOrigin, Constants.KEY.CHANNEL, options.getChannel());

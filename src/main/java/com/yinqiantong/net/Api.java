@@ -44,9 +44,12 @@ public class Api {
     public static Res.OrderRes getOrder(Yinqiantong yinqiantong, String outTradeNo) throws Exception {
         String url = String.format("%s/%s", Constants.URL.ORDER, outTradeNo);
 
+        long ts = System.currentTimeMillis() / 1000L;
         String order = Request.Get(url)
                 .addHeader(Constants.KEY.APPID, yinqiantong.getAppId())
                 .addHeader(Constants.KEY.APPKEY, yinqiantong.getAppKey())
+                .addHeader(Constants.KEY.TS, String.valueOf(ts))
+                .addHeader(Constants.KEY.SIGN, yinqiantong.createSign(null, ts))
                 .execute().returnContent().asString();
 
         Gson gson = new Gson();
