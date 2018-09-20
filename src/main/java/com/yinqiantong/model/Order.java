@@ -1,37 +1,26 @@
 package com.yinqiantong.model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Order {
-    @SerializedName("app_id")
-    private String appId;
+    private String app_id;
     private String channel;
     private String platform;
-    @SerializedName("out_trade_no")
-    private String outTradeNo;
+    private String out_trade_no;
     private String status;
     private long money;
-    @SerializedName("client_ip")
-    private String clientIp;
+    private String client_ip;
     private String openId;
     private String subject;
     private String description;
-    @SerializedName("notify_url")
-    private String notifyUrl;
-    @SerializedName("success_url")
-    private String successUrl;
+    private String notify_url;
+    private String success_url;
     private String extra;
-    @SerializedName("pay_body")
-    private String payBody;
-    @SerializedName("pay_time")
-    private long payTime;
-    @SerializedName("expire_time")
-    private long expireTime;
-    @SerializedName("create_time")
-    private long createTime;
+    private String pay_body;
+    private long pay_time;
+    private long expire_time;
+    private long create_time;
 
-    public String getAppId() {
-        return appId;
+    public String getApp_id() {
+        return app_id;
     }
 
     public String getChannel() {
@@ -42,8 +31,8 @@ public class Order {
         return platform;
     }
 
-    public String getOutTradeNo() {
-        return outTradeNo;
+    public String getOut_trade_no() {
+        return out_trade_no;
     }
 
     public String getStatus() {
@@ -54,8 +43,8 @@ public class Order {
         return money;
     }
 
-    public String getClientIp() {
-        return clientIp;
+    public String getClient_ip() {
+        return client_ip;
     }
 
     public String getOpenId() {
@@ -70,31 +59,31 @@ public class Order {
         return description;
     }
 
-    public String getNotifyUrl() {
-        return notifyUrl;
+    public String getNotify_url() {
+        return notify_url;
     }
 
-    public String getSuccessUrl() {
-        return successUrl;
+    public String getSuccess_url() {
+        return success_url;
     }
 
     public String getExtra() {
         return extra;
     }
 
-    public String getPayBody() {
-        return payBody;
+    public String getPay_body() {
+        return pay_body;
     }
 
-    public long getPayTime() {
-        return payTime;
+    public long getPay_time() {
+        return pay_time;
     }
 
-    public long getExpireTime() {
-        return expireTime;
+    public long getExpire_time() {
+        return expire_time;
     }
 
-    public long getCreateTime() {
-        return createTime;
+    public long getCreate_time() {
+        return create_time;
     }
 }
