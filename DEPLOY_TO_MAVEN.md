@@ -32,14 +32,8 @@ After a while, click the button `refresh`.
 
 Click the button `Release` and add some description in the model dialog. 
 
-## Notify the admin
-
-visit [https://issues.sonatype.org/browse/OSSRH-42555](https://issues.sonatype.org/browse/OSSRH-42555)
-
-Add comment to tell the admin about new version build success
-
 ## Get the maven repository
 
-After the admin response, we can get the repository here.
+After a while, we can get the repository here.
 
 [https://search.maven.org/search?q=yinqiantong](https://search.maven.org/search?q=yinqiantong)
