@@ -2,10 +2,10 @@ package com.yinqiantong.model;
 
 import com.yinqiantong.common.Constants;
 
-public class Res<T> {
+public class OrderRes {
     private String msg;
     private int code;
-    private T data;
+    private Order data;
 
     public boolean isSuccess() {
         return code == Constants.CODE.SUCCESS;
@@ -19,11 +19,7 @@ public class Res<T> {
         return code;
     }
 
-    public T getData() {
+    public Order getOrder() {
         return data;
-    }
-
-    public static class OrderRes extends Res<Order> {
-
     }
 }

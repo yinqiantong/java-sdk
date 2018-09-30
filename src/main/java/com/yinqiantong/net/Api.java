@@ -1,10 +1,10 @@
 package com.yinqiantong.net;
 
+import com.google.gson.Gson;
 import com.yinqiantong.Yinqiantong;
 import com.yinqiantong.common.Constants;
 import com.yinqiantong.model.Options;
-import com.yinqiantong.model.Res;
-import com.google.gson.Gson;
+import com.yinqiantong.model.OrderRes;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class Api {
-    public static Res.OrderRes createOrder(Yinqiantong yinqiantong, Options options) throws Exception {
+    public static OrderRes createOrder(Yinqiantong yinqiantong, Options options) throws Exception {
         List<NameValuePair> form = Form.form()
                 .add(Constants.KEY.CHANNEL, options.getChannel())
                 .add(Constants.KEY.PLATFORM, options.getPlatform())
@@ -40,12 +40,20 @@ public class Api {
                 .execute().returnContent().asString();
 
         Gson gson = new Gson();
-        return gson.fromJson(order, Res.OrderRes.class);
+        return gson.fromJson(order, OrderRes.class);
     }
 
-    public static Res.OrderRes getOrder(Yinqiantong yinqiantong, String outTradeNo) throws Exception {
-        String url = String.format("%s/%s", Constants.URL.ORDER, outTradeNo);
+    public static OrderRes getOrder(Yinqiantong yinqiantong, String outTradeNo) throws Exception {
+        String url = String.format("%s?out_trade_no=%s", Constants.URL.ORDER, outTradeNo);
+        return executeOrderGet(yinqiantong, url);
+    }
 
+    public static OrderRes getClientOrder(Yinqiantong yinqiantong, String clientOutTradeNo) throws Exception {
+        String url = String.format("%s?client_out_trade_no=%s", Constants.URL.ORDER, clientOutTradeNo);
+        return executeOrderGet(yinqiantong, url);
+    }
+
+    private static OrderRes executeOrderGet(Yinqiantong yinqiantong, String url) throws Exception {
         long ts = System.currentTimeMillis() / 1000L;
         String order = Request.Get(url)
                 .addHeader(Constants.KEY.APPID, yinqiantong.getAppId())
@@ -55,6 +63,6 @@ public class Api {
                 .execute().returnContent().asString();
 
         Gson gson = new Gson();
-        return gson.fromJson(order, Res.OrderRes.class);
+        return gson.fromJson(order, OrderRes.class);
     }
 }

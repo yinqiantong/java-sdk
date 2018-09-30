@@ -2,7 +2,7 @@ package com.yinqiantong;
 
 import com.yinqiantong.model.Options;
 import com.yinqiantong.model.Order;
-import com.yinqiantong.model.Res;
+import com.yinqiantong.model.OrderRes;
 import com.yinqiantong.net.Api;
 import com.yinqiantong.util.SignUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -63,21 +63,30 @@ public final class Yinqiantong {
         if (options.getTs() <= 0L) {
             options.setTs(System.currentTimeMillis() / 1000L);
         }
-        Res.OrderRes res = Api.createOrder(this, options);
+        OrderRes res = Api.createOrder(this, options);
         if (!res.isSuccess()) {
             throw new Exception(res.getMsg());
         }
 
-        return res.getData();
+        return res.getOrder();
     }
 
     public Order getOrder(String outTradeNo) throws Exception {
-        Res.OrderRes res = Api.getOrder(this, outTradeNo);
+        OrderRes res = Api.getOrder(this, outTradeNo);
         if (!res.isSuccess()) {
             throw new Exception(res.getMsg());
         }
 
-        return res.getData();
+        return res.getOrder();
+    }
+
+    public Order getClientOrder(String clientOutTradeNo) throws Exception {
+        OrderRes res = Api.getClientOrder(this, clientOutTradeNo);
+        if (!res.isSuccess()) {
+            throw new Exception(res.getMsg());
+        }
+
+        return res.getOrder();
     }
 
     public boolean checkSign(Map<String, Object> data, long ts, String sign) {
