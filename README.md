@@ -7,7 +7,7 @@
 1，Gradle：
 
 ```
-compile 'com.github.yinqiantong:java-sdk:0.0.5'
+compile 'com.github.yinqiantong:java-sdk:0.0.6'
 ```
 
 2，Maven:
@@ -16,17 +16,17 @@ compile 'com.github.yinqiantong:java-sdk:0.0.5'
 <dependency>
   <groupId>com.github.yinqiantong</groupId>
   <artifactId>java-sdk</artifactId>
-  <version>0.0.5</version>
+  <version>0.0.6</version>
 </dependency>
 ```
 
 3，Jar 包引入：
 
-[下载 Jar](https://search.maven.org/remotecontent?filepath=com/github/yinqiantong/java-sdk/0.0.5/java-sdk-0.0.5-sources.jar)
+[下载 Jar](https://search.maven.org/remotecontent?filepath=com/github/yinqiantong/java-sdk/0.0.6/java-sdk-0.0.6-sources.jar)
 
 4，其他：
 
-更多方式，欢迎到 [Sonatype](https://search.maven.org/artifact/com.github.yinqiantong/java-sdk/0.0.5/jar) 中了解更多
+更多方式，欢迎到 [Sonatype](https://search.maven.org/artifact/com.github.yinqiantong/java-sdk/0.0.6/jar) 中了解更多
 
 ## 创建订单
 

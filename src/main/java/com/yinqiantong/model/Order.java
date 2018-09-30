@@ -5,6 +5,7 @@ public class Order {
     private String channel;
     private String platform;
     private String out_trade_no;
+    private String client_out_trade_no;
     private String status;
     private long money;
     private String client_ip;
@@ -12,7 +13,7 @@ public class Order {
     private String subject;
     private String description;
     private String notify_url;
-    private String success_url;
+    private String return_url;
     private String extra;
     private String pay_body;
     private long pay_time;
@@ -33,6 +34,10 @@ public class Order {
 
     public String getOut_trade_no() {
         return out_trade_no;
+    }
+
+    public String getClient_out_trade_no() {
+        return client_out_trade_no;
     }
 
     public String getStatus() {
@@ -63,8 +68,8 @@ public class Order {
         return notify_url;
     }
 
-    public String getSuccess_url() {
-        return success_url;
+    public String getReturn_url() {
+        return return_url;
     }
 
     public String getExtra() {

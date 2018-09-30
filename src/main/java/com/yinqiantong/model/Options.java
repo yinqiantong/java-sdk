@@ -16,6 +16,8 @@ public class Options {
     private long ts;
     private String code;
     private String notifyUrl;
+    private String returnUrl;
+    private String clientOutTradeNo;
 
     public static Options newInstance() {
         return new Options();
@@ -135,6 +137,24 @@ public class Options {
 
     public Options setNotifyUrl(String notifyUrl) {
         this.notifyUrl = notifyUrl;
+        return this;
+    }
+
+    public String getReturnUrl() {
+        return returnUrl;
+    }
+
+    public Options setReturnUrl(String returnUrl) {
+        this.returnUrl = returnUrl;
+        return this;
+    }
+
+    public String getClientOutTradeNo() {
+        return clientOutTradeNo;
+    }
+
+    public Options setClientOutTradeNo(String clientOutTradeNo) {
+        this.clientOutTradeNo = clientOutTradeNo;
         return this;
     }
 }

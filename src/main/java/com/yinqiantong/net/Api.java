@@ -16,15 +16,17 @@ public class Api {
     public static Res.OrderRes createOrder(Yinqiantong yinqiantong, Options options) throws Exception {
         List<NameValuePair> form = Form.form()
                 .add(Constants.KEY.CHANNEL, options.getChannel())
-                .add(Constants.KEY.CODE, options.getCode())
                 .add(Constants.KEY.PLATFORM, options.getPlatform())
                 .add(Constants.KEY.MONEY, String.valueOf(options.getMoney()))
-                .add(Constants.KEY.NOTIFY_URL, options.getNotifyUrl())
                 .add(Constants.KEY.CLIENT_IP, options.getClientIp())
                 .add(Constants.KEY.OPEN_ID, options.getOpenId())
                 .add(Constants.KEY.SUBJECT, options.getSubject())
                 .add(Constants.KEY.DESCRIPTION, options.getDescription())
                 .add(Constants.KEY.EXTRA, options.getExtra())
+                .add(Constants.KEY.CODE, options.getCode())
+                .add(Constants.KEY.NOTIFY_URL, options.getNotifyUrl())
+                .add(Constants.KEY.RETURN_URL, options.getReturnUrl())
+                .add(Constants.KEY.CLIENT_OUT_TRADE_NO, options.getClientOutTradeNo())
                 .build();
 
         String order = Request.Post(Constants.URL.ORDER)

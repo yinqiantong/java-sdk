@@ -33,6 +33,7 @@ public class SignUtil {
         StringBuilder signOrigin = new StringBuilder();
         appendIfNotEmpty(signOrigin, Constants.KEY.CHANNEL, options.getChannel());
         appendIfNotEmpty(signOrigin, Constants.KEY.CLIENT_IP, options.getClientIp());
+        appendIfNotEmpty(signOrigin, Constants.KEY.CLIENT_OUT_TRADE_NO, options.getClientOutTradeNo());
         appendIfNotEmpty(signOrigin, Constants.KEY.CODE, options.getCode());
         appendIfNotEmpty(signOrigin, Constants.KEY.DESCRIPTION, options.getDescription());
         appendIfNotEmpty(signOrigin, Constants.KEY.EXTRA, options.getExtra());
@@ -40,6 +41,7 @@ public class SignUtil {
         appendIfNotEmpty(signOrigin, Constants.KEY.NOTIFY_URL, options.getNotifyUrl());
         appendIfNotEmpty(signOrigin, Constants.KEY.OPEN_ID, options.getOpenId());
         appendIfNotEmpty(signOrigin, Constants.KEY.PLATFORM, options.getPlatform());
+        appendIfNotEmpty(signOrigin, Constants.KEY.RETURN_URL, options.getReturnUrl());
         appendIfNotEmpty(signOrigin, Constants.KEY.SUBJECT, options.getSubject());
 
         appendIfNotEmpty(signOrigin, Constants.KEY.TS, options.getTs());
