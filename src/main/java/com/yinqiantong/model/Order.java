@@ -16,9 +16,7 @@ public class Order {
     private String return_url;
     private String extra;
     private String pay_body;
-    private long pay_time;
     private long expire_time;
-    private long create_time;
 
     public String getApp_id() {
         return app_id;
@@ -80,16 +78,8 @@ public class Order {
         return pay_body;
     }
 
-    public long getPay_time() {
-        return pay_time;
-    }
-
     public long getExpire_time() {
         return expire_time;
-    }
-
-    public long getCreate_time() {
-        return create_time;
     }
 
     public Order setApp_id(String app_id) {
@@ -167,18 +157,9 @@ public class Order {
         return this;
     }
 
-    public Order setPay_time(long pay_time) {
-        this.pay_time = pay_time;
-        return this;
-    }
-
     public Order setExpire_time(long expire_time) {
         this.expire_time = expire_time;
         return this;
     }
 
-    public Order setCreate_time(long create_time) {
-        this.create_time = create_time;
-        return this;
-    }
 }
