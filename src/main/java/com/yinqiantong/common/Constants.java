@@ -2,7 +2,7 @@ package com.yinqiantong.common;
 
 public final class Constants {
     public static final class URL {
-        private static final String HOST = "https://yinqiantong.com";
+        private static final String HOST = "https://api.yqtapi.com";
         public static final String ORDER = HOST + "/order";
     }
 
