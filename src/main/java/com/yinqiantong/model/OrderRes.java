@@ -5,7 +5,7 @@ import com.yinqiantong.common.Constants;
 public class OrderRes {
     private String msg;
     private int code;
-    private Order order;
+    private Order data;
 
     public boolean isSuccess() {
         return code == Constants.CODE.SUCCESS;
@@ -20,6 +20,6 @@ public class OrderRes {
     }
 
     public Order getOrder() {
-        return order;
+        return data;
     }
 }
