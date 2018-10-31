@@ -111,6 +111,9 @@ public class Options {
     }
 
     public long getTs() {
+        if (ts <= 0L) {
+            ts = System.currentTimeMillis() / 1000L;
+        }
         return ts;
     }
 

@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import com.yinqiantong.Yinqiantong;
 import com.yinqiantong.common.Constants;
 import com.yinqiantong.model.Options;
+import com.yinqiantong.model.Order;
 import com.yinqiantong.model.OrderRes;
+import com.yinqiantong.model.OrderStateRes;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
@@ -15,6 +17,7 @@ import java.util.List;
 public class Api {
     public static OrderRes createOrder(Yinqiantong yinqiantong, Options options) throws Exception {
         List<NameValuePair> form = Form.form()
+                .add(Constants.KEY.APPID, yinqiantong.getAppId())
                 .add(Constants.KEY.CHANNEL, options.getChannel())
                 .add(Constants.KEY.PLATFORM, options.getPlatform())
                 .add(Constants.KEY.MONEY, String.valueOf(options.getMoney()))
@@ -26,43 +29,60 @@ public class Api {
                 .add(Constants.KEY.CODE, options.getCode())
                 .add(Constants.KEY.NOTIFY_URL, options.getNotifyUrl())
                 .add(Constants.KEY.RETURN_URL, options.getReturnUrl())
+                .add(Constants.KEY.TS, String.valueOf(options.getTs()))
+                .add(Constants.KEY.SIGN, yinqiantong.createSign(options))
                 .add(Constants.KEY.CLIENT_OUT_TRADE_NO, options.getClientOutTradeNo())
                 .build();
 
         String order = Request.Post(Constants.URL.ORDER)
                 .connectTimeout(yinqiantong.getRequestTimeout())
                 .socketTimeout(yinqiantong.getRequestTimeout())
-                .addHeader(Constants.KEY.APPID, yinqiantong.getAppId())
-                .addHeader(Constants.KEY.APPKEY, yinqiantong.getAppKey())
-                .addHeader(Constants.KEY.TS, String.valueOf(options.getTs()))
-                .addHeader(Constants.KEY.SIGN, yinqiantong.createSign(options))
                 .bodyForm(form)
                 .execute().returnContent().asString();
 
         Gson gson = new Gson();
-        return gson.fromJson(order, OrderRes.class);
+        OrderRes res = gson.fromJson(order, OrderRes.class);
+
+        Order resOrder = res.getOrder();
+        if (resOrder != null) {
+            resOrder.setApp_id(yinqiantong.getAppId());
+            resOrder.setChannel(options.getChannel());
+            resOrder.setPlatform(options.getPlatform());
+            resOrder.setMoney(options.getMoney());
+            resOrder.setClient_ip(options.getClientIp());
+            resOrder.setOpenId(options.getOpenId());
+            resOrder.setSubject(options.getSubject());
+            resOrder.setDescription(options.getDescription());
+            resOrder.setExtra(options.getExtra());
+            resOrder.setNotify_url(options.getNotifyUrl());
+            resOrder.setReturn_url(options.getReturnUrl());
+            resOrder.setClient_out_trade_no(options.getClientOutTradeNo());
+        }
+
+        return res;
     }
 
-    public static OrderRes getOrder(Yinqiantong yinqiantong, String outTradeNo) throws Exception {
-        String url = String.format("%s?out_trade_no=%s", Constants.URL.ORDER, outTradeNo);
+    public static OrderStateRes getOrderStateByOutTradeNo(Yinqiantong yinqiantong, String outTradeNo) throws Exception {
+        String url = String.format("%s?appid=%s&out_trade_no=%s&ts=%s",
+                Constants.URL.ORDER, yinqiantong.getAppId(), outTradeNo, System.currentTimeMillis() / 1000);
         return executeOrderGet(yinqiantong, url);
     }
 
-    public static OrderRes getClientOrder(Yinqiantong yinqiantong, String clientOutTradeNo) throws Exception {
-        String url = String.format("%s?client_out_trade_no=%s", Constants.URL.ORDER, clientOutTradeNo);
+    public static OrderStateRes getOrderStateByClientOutTradeNo(Yinqiantong yinqiantong, String clientOutTradeNo) throws Exception {
+        String url = String.format("%s?appid=%s&client_out_trade_no=%s&ts=%s",
+                Constants.URL.ORDER, yinqiantong.getAppId(), clientOutTradeNo, System.currentTimeMillis() / 1000);
         return executeOrderGet(yinqiantong, url);
     }
 
-    private static OrderRes executeOrderGet(Yinqiantong yinqiantong, String url) throws Exception {
-        long ts = System.currentTimeMillis() / 1000L;
+    private static OrderStateRes executeOrderGet(Yinqiantong yinqiantong, String url) throws Exception {
         String order = Request.Get(url)
-                .addHeader(Constants.KEY.APPID, yinqiantong.getAppId())
-                .addHeader(Constants.KEY.APPKEY, yinqiantong.getAppKey())
-                .addHeader(Constants.KEY.TS, String.valueOf(ts))
-                .addHeader(Constants.KEY.SIGN, yinqiantong.createSign(null, ts))
-                .execute().returnContent().asString();
+                .connectTimeout(yinqiantong.getRequestTimeout())
+                .socketTimeout(yinqiantong.getRequestTimeout())
+                .execute()
+                .returnContent()
+                .asString();
 
         Gson gson = new Gson();
-        return gson.fromJson(order, OrderRes.class);
+        return gson.fromJson(order, OrderStateRes.class);
     }
 }

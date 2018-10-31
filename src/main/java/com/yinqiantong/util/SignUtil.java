@@ -1,6 +1,5 @@
 package com.yinqiantong.util;
 
-import com.yinqiantong.Yinqiantong;
 import com.yinqiantong.common.Constants;
 import com.yinqiantong.model.Options;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -12,16 +11,23 @@ import java.util.List;
 import java.util.Map;
 
 public class SignUtil {
-    public static String createSign(Map<String, Object> data, long ts, String appSecret) {
+    public static String createSign(Map<String, Object> data, String appSecret) {
         StringBuilder signOrigin = new StringBuilder();
         if (data != null && !data.isEmpty()) {
             List<String> keys = new ArrayList<>(data.keySet());
             Collections.sort(keys);
             for (String key : keys) {
+                if (StringUtils.isEmpty(key) || data.get(key) == null || key.equals(Constants.KEY.SIGN)) {
+                    continue;
+                }
+                if (data.get(key) instanceof String) {
+                    if (StringUtils.isEmpty((String) data.get(key))) {
+                        continue;
+                    }
+                }
                 signOrigin.append(key).append('=').append(data.get(key)).append('&');
             }
         }
-        appendIfNotEmpty(signOrigin, Constants.KEY.TS, ts);
         appendIfNotEmpty(signOrigin, Constants.KEY.APP_SECRET, appSecret);
 
         signOrigin.deleteCharAt(signOrigin.length() - 1);
@@ -29,8 +35,9 @@ public class SignUtil {
         return DigestUtils.md5Hex(signOrigin.toString());
     }
 
-    public static String createSign(Yinqiantong yinqiantong, Options options) {
+    public static String createSign(String appId, String appSecret, Options options) {
         StringBuilder signOrigin = new StringBuilder();
+        appendIfNotEmpty(signOrigin, Constants.KEY.APPID, appId);
         appendIfNotEmpty(signOrigin, Constants.KEY.CHANNEL, options.getChannel());
         appendIfNotEmpty(signOrigin, Constants.KEY.CLIENT_IP, options.getClientIp());
         appendIfNotEmpty(signOrigin, Constants.KEY.CLIENT_OUT_TRADE_NO, options.getClientOutTradeNo());
@@ -45,7 +52,7 @@ public class SignUtil {
         appendIfNotEmpty(signOrigin, Constants.KEY.SUBJECT, options.getSubject());
 
         appendIfNotEmpty(signOrigin, Constants.KEY.TS, options.getTs());
-        appendIfNotEmpty(signOrigin, Constants.KEY.APP_SECRET, yinqiantong.getAppSecret());
+        appendIfNotEmpty(signOrigin, Constants.KEY.APP_SECRET, appSecret);
 
         signOrigin.deleteCharAt(signOrigin.length() - 1);
 

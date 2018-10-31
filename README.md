@@ -7,7 +7,7 @@
 1，Gradle：
 
 ```
-compile 'com.github.yinqiantong:java-sdk:0.0.7'
+compile 'com.github.yinqiantong:java-sdk:0.0.8'
 ```
 
 2，Maven:
@@ -16,28 +16,41 @@ compile 'com.github.yinqiantong:java-sdk:0.0.7'
 <dependency>
   <groupId>com.github.yinqiantong</groupId>
   <artifactId>java-sdk</artifactId>
-  <version>0.0.7</version>
+  <version>0.0.8</version>
 </dependency>
 ```
 
 3，Jar 包引入：
 
-[下载 Jar](https://search.maven.org/remotecontent?filepath=com/github/yinqiantong/java-sdk/0.0.7/java-sdk-0.0.7-sources.jar)
+[下载 Jar](https://search.maven.org/remotecontent?filepath=com/github/yinqiantong/java-sdk/0.0.8/java-sdk-0.0.8-sources.jar)
 
 4，其他：
 
-更多方式，欢迎到 [Sonatype](https://search.maven.org/artifact/com.github.yinqiantong/java-sdk/0.0.7/jar) 中了解更多
+更多方式，欢迎到 [Sonatype](https://search.maven.org/artifact/com.github.yinqiantong/java-sdk/0.0.8/jar) 中了解更多
+
 
 ## 创建订单
 
 ```
-Yinqiantong.create(appId, appKey, appSecret)
+Yinqiantong.create(appId, appSecret)
         .createOrder(Options options = Options.newInstance()
-                 .setChannel("alipay")
-                 .setPlatform("app")
+                 .setChannel("1")
+                 .setPlatform("2")
                  .setMoney(1)
                  .setClientIp("127.0.0.1")
                  .setNotifyUrl("https://yinqiantong.com/test")
-                 .setClientOutTradeNo(createClientOutTradeNo())
-                 .setTs(System.currentTimeMillis() / 1000L));
+                 .setClientOutTradeNo(createClientOutTradeNo());
+```
+
+
+## 验证签名
+
+```
+Yinqiantong.create(appId, appSecret).checkSign(notifyDataStr);
+```
+
+## 生成签名
+
+```
+Yinqiantong.create(appId, appSecret).createSign(yourData);
 ```

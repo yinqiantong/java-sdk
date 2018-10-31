@@ -18,7 +18,6 @@ public final class Constants {
         public static final String SUBJECT = "subject";
         public static final String TS = "ts";
         public static final String APP_SECRET = "app_secret";
-        public static final String APPKEY = "appkey";
         public static final String APPID = "appid";
         public static final String SIGN = "sign";
         public static final String NOTIFY_URL = "notify_url";
@@ -28,5 +27,11 @@ public final class Constants {
 
     public static final class CODE {
         public static final int SUCCESS = 200;
+        public static final int UNPAID = 4201;
+        public static final int PAY_FAIL = 4400;
+        public static final int ORDER_EXPIRED = 4408;
+        public static final int NOT_FOUND = 4404;
+        public static final int PARAM_ERROR = 4414;
+        public static final int SERVER_ERROR = 4500;
     }
 }
